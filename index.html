@@ -26,11 +26,12 @@
         background: #6b83fc;
         border-radius: 50px;
         padding: 6px 22px;
+        border: none;
       }
     </style>
   </head>
   <body>
-    <header class="mx-32">
+    <header class="mx-4 md:mx-10 lg:mx-32">
       <div class="navbar bg-base-100">
         <div class="navbar-start">
           <div class="dropdown">
@@ -62,7 +63,7 @@
           <a class="btn btn-ghost text-xl">PeTro</a>
         </div>
         <div class="navbar-end hidden lg:flex">
-          <ul class="menu menu-horizontal  gap-4 items-center">
+          <ul class="menu menu-horizontal gap-4 items-center">
             <li class="tooltip tooltip-bottom lg:tooltip" data-tip="home">
               <i class="fa-solid fa-house p-4 border-2 rounded-full"></i>
             </li>
@@ -82,28 +83,98 @@
         </div>
       </div>
     </header>
-    <main class="mx-32 my-10">
+    <main class="mx-4 md:mx-10 lg:mx-32 my-10">
       <!-- Banner section start -->
       <section class="">
         <div
-          class="hero min-h-screen bg-[#12132D] rounded-3xl overflow-hidden"
+          class="hero min-h-screen bg-[#12132D] flex flex-col lg:flex-row justify-evenly rounded-3xl overflow-hidden"
           style="background-image: url(images/bgbanner.png)"
         >
-          <div class="hero-overlay bg-opacity-60"></div>
           <div class="hero-content text-center text-neutral-content">
             <div class="max-w-md">
-              <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+              <h1 class="mb-5 text-5xl font-bold">
+                Welcome to the <span class="text-purple-500">PeTro</span> Forum
+              </h1>
               <p class="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+                Share your favorite opinion and win and wp forum coffee mug!
               </p>
-              <button class="btn btn-primary">Get Started</button>
+              <div class="bg-white px-4 py-2 flex justify-between rounded-full">
+                <input
+                  type="text"
+                  class="w-3/4 text-2xl px-3 text-black outline-none"
+                  placeholder="Search here anything"
+                /><button class="btn primary-btn">Search</button>
+              </div>
             </div>
+          </div>
+          <div class="bg-white p-10 text-2xl rounded-lg">
+            <ul class="space-y-3">
+              <li class="flex justify-between gap-6">
+                <span>Registered Users </span><span>01</span>
+              </li>
+              <li class="flex justify-between gap-6">
+                <span>Forum</span><span>05</span>
+              </li>
+              <li class="flex justify-between gap-6">
+                <span>Topics</span><span>01</span>
+              </li>
+              <li class="flex justify-between gap-6">
+                <span>Replies</span><span>01</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
       <!-- Banner section End -->
+      <!-- Discuss section start -->
+      <section class="my-10">
+        <div class="text-center space-y-3">
+          <h3 class="text-4xl font-extrabold">Let’s Discuss</h3>
+          <p>
+            Yes, you can run unit tests and view the results directly within the
+            app. The integrated testing features allow for a streamlined .
+          </p>
+        </div>
+        <!-- api integration section -->
+        <div class="flex flex-col lg:flex-row justify-between my-4">
+          <!-- left side -->
+          <div id="post-section">
+            
+          </div>
+          <!-- right side -->
+          <div class="bg-[#f3f3f4] rounded-lg p-6">
+            <div class="flex justify-between gap-10">
+              <h2 class="text-xl font-bold">Title </h2>
+              <p><i class="fa-solid fa-check-double text-green-400"></i> Mark as read (<span>4</span>)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Discuss section End -->
+      <!-- Forum section start -->
+      <section class="my-14">
+        <div
+          class="hero pt-6 bg-[#12132D] flex flex-col lg:flex-row justify-evenly rounded-3xl overflow-hidden"
+        >
+          <div class="hero-content text-center text-neutral-content">
+            <div class="max-w-md">
+              <h1 class="mb-5 text-5xl font-bold">Join Our Forum</h1>
+              <p class="mb-5">
+                Share your favorite opinion and win and wp forum coffee mug!
+                Yes, you can run unit tests and view the results directly within
+                the app.
+              </p>
+              <button class="btn primary-btn">Registered Now</button>
+            </div>
+          </div>
+          <img
+            class="border border-dashed border-b-0"
+            src="images/joinforum.png"
+            alt=""
+          />
+        </div>
+      </section>
+      <!-- Forum sectin End -->
     </main>
     <footer class="bg-[#12132d0d] text-center mx-auto mt-6 p-4">
       <div>
@@ -123,5 +194,6 @@
       <hr />
       <p class="my-5">2024, All Rights Reserved.</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
