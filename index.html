@@ -138,14 +138,20 @@
         <!-- api integration section -->
         <div class="flex flex-col lg:flex-row justify-between my-4">
           <!-- left side -->
-          <div id="post-section">
-            
-          </div>
+          <div id="post-section"></div>
           <!-- right side -->
-          <div class="bg-[#f3f3f4] rounded-lg p-6">
+          <div class="bg-[#f3f3f4] rounded-lg p-6 h-full  lg:w-[40%]">
             <div class="flex justify-between gap-10">
-              <h2 class="text-xl font-bold">Title </h2>
-              <p><i class="fa-solid fa-check-double text-green-400"></i> Mark as read (<span>4</span>)</p>
+              <h2 class="text-xl font-bold">Title</h2>
+              <p>
+                <i class="fa-solid fa-check-double text-green-400"></i> Mark as
+                read (<span id="totalRead">0</span>)
+              </p>
+            </div>
+            <div >
+              <ul id="listMenu" class="space-y-2">
+               
+              </ul>
             </div>
           </div>
         </div>
