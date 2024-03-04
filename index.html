@@ -28,24 +28,23 @@
         padding: 6px 22px;
         border: none;
       }
-   .indicator {
-  position: absolute;
-  top: -4px;
-  left:  34px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  z-index: 1;
-}
+      .indicator {
+        position: absolute;
+        top: -4px;
+        left: 34px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        z-index: 1;
+      }
 
-.active {
-  background: green;
-}
+      .active {
+        background: green;
+      }
 
-.inactive {
-  background: red;
-}
-
+      .inactive {
+        background: red;
+      }
     </style>
   </head>
   <body>
@@ -121,7 +120,9 @@
                   type="text"
                   class="w-3/4 text-2xl px-3 text-black outline-none"
                   placeholder="Search here anything"
-                /><button class="btn primary-btn">Search</button>
+                /><button onclick="searchBtn()" class="btn primary-btn">
+                  Search
+                </button>
               </div>
             </div>
           </div>
@@ -152,6 +153,13 @@
             Yes, you can run unit tests and view the results directly within the
             app. The integrated testing features allow for a streamlined .
           </p>
+        </div>
+        <!-- Loading part -->
+        <div id="spinner" class="text-center my-4 hidden">
+          <span class="loading loading-bars loading-xs"></span>
+          <span class="loading loading-bars loading-sm"></span>
+          <span class="loading loading-bars loading-md"></span>
+          <span class="loading loading-bars loading-lg"></span>
         </div>
         <!-- api integration section -->
         <div class="flex flex-col lg:flex-row justify-between my-4">
@@ -207,9 +215,10 @@
             technology, classic video games, and nostalgic pop culture
           </p>
         </div>
-        <div id="latestPostContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        
-        </div>
+        <div
+          id="latestPostContainer"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+        ></div>
       </section>
       <!-- Latest post section End -->
     </main>

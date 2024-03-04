@@ -81,7 +81,7 @@ function addItem(index) {
     "p-2"
   );
 
-  // Create elements for title and view count
+  
   const titleElement = document.createElement("h2");
   titleElement.classList.add("text-xl", "font-bold");
   titleElement.innerText = clickedPost.title;
@@ -92,16 +92,30 @@ function addItem(index) {
     <span>${clickedPost.view_count}</span>
   `;
 
-  // Append title and view count elements to the list item
+
   li.appendChild(titleElement);
   li.appendChild(viewCountElement);
 
-  // Append the list item to the listMenu
   const listMenu = document.getElementById("listMenu");
   listMenu.appendChild(li);
 }
 
 loadPosts();
+
+const spinner = document.getElementById("spinner");
+function hideSpinner() {
+  spinner.classList.remove("hidden");
+  setTimeout(() => {
+    spinner.classList.add("hidden");
+  }, 2000); 
+}
+
+function searchBtn() {
+  hideSpinner();
+}
+
+
+
 
 const latestPost = async () => {
   try {
