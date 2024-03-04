@@ -1,15 +1,16 @@
-let posts; // Define the posts array in the global scope
+let posts; 
 
-const loadPosts = async () => {
+const loadPosts = async (searchInput) => {
   try {
     const res = await fetch(
-      "https://openapi.programming-hero.com/api/retro-forum/posts"
+      `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchInput}`
     );
     const data = await res.json();
     posts = data.posts;
     console.log(posts);
 
     postContainer = document.getElementById("post-section");
+        postContainer.innerHTML = ""; 
     posts.forEach((post) => {
       const div = document.createElement("div");
       div.innerHTML = `<div class="bg-[#f3f3f5]  mb-4 rounded-lg p-6 ">
@@ -83,7 +84,7 @@ function addItem(index) {
 
   
   const titleElement = document.createElement("h2");
-  titleElement.classList.add("text-xl", "font-bold");
+  titleElement.classList.add("text-xl", "font-normal");
   titleElement.innerText = clickedPost.title;
 
   const viewCountElement = document.createElement("span");
@@ -105,6 +106,10 @@ loadPosts();
 const spinner = document.getElementById("spinner");
 function hideSpinner() {
   spinner.classList.remove("hidden");
+ 
+  
+
+  
   setTimeout(() => {
     spinner.classList.add("hidden");
   }, 2000); 
@@ -112,6 +117,9 @@ function hideSpinner() {
 
 function searchBtn() {
   hideSpinner();
+  posts.textContent = "";
+  const searchInput = document.getElementById("searchInput").value;
+    loadPosts(searchInput);
 }
 
 
