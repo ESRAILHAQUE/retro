@@ -6,16 +6,22 @@ const loadPosts = async () => {
       "https://openapi.programming-hero.com/api/retro-forum/posts"
     );
     const data = await res.json();
-    posts = data.posts; // Assign fetched posts to the global posts variable
-  
+    posts = data.posts;
+    console.log(posts);
 
     postContainer = document.getElementById("post-section");
     posts.forEach((post) => {
       const div = document.createElement("div");
       div.innerHTML = `<div class="bg-[#f3f3f5]  mb-4 rounded-lg p-6 ">
-              <div class="flex gap-2"> <img class="w-10 h-12 rounded-lg bg-cover" src="${
+              <div class="flex gap-2 relative"><img class="w-10 h-12 rounded-lg bg-cover" src="${
                 post.image
-              }" alt="" />
+              }" alt="" 
+       style="background-color: ${post.isActive === true ? "green" : "red"}" />
+  ${
+    post.isActive === true
+      ? '<span class="indicator active"></span>'
+      : '<span class="indicator inactive"></span>'
+  }
               <div class="space-x-3">
                 <div class="flex gap-8">
                   <p>#<span>${post.category}</span></p>
@@ -48,6 +54,7 @@ const loadPosts = async () => {
                 </div>
             </div>`;
       postContainer.appendChild(div);
+      console.log(post.isActive);
     });
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -65,7 +72,14 @@ function addItem(index) {
 
   // Create a new list item element
   const li = document.createElement("li");
-  li.classList.add("flex", "justify-between", "gap-3","bg-white" ,"rounded-lg" ,"p-2");
+  li.classList.add(
+    "flex",
+    "justify-between",
+    "gap-3",
+    "bg-white",
+    "rounded-lg",
+    "p-2"
+  );
 
   // Create elements for title and view count
   const titleElement = document.createElement("h2");
@@ -91,12 +105,14 @@ loadPosts();
 
 const latestPost = async () => {
   try {
-    const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/latest-posts");
+    const res = await fetch(
+      "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
+    );
     const data = await res.json();
     console.log(data);
     latestPostContainer = document.getElementById("latestPostContainer");
-    data.forEach((latestPost) =>{
-      const div = document.createElement('div');
+    data.forEach((latestPost) => {
+      const div = document.createElement("div");
       div.innerHTML = `<div class="card  bg-base-100 h-full shadow-xl">
             <figure class="px-10 pt-10">
               <img
@@ -109,7 +125,7 @@ const latestPost = async () => {
               <p><i class="fa-solid fa-calendar-days"></i> <span>${
                 latestPost.author.posted_date
                   ? latestPost.author.posted_date
-                  : "No publish date"
+                  : " No publish date"
               }</span></p>
               <h2 class="card-title">${latestPost.title}!</h2>
               <p>${latestPost.description}</p>
@@ -119,7 +135,11 @@ const latestPost = async () => {
                 }" alt="" class="w-10 h-10 rounded-full">
                 <div>
                   <h2>${latestPost.author.name}</h2>
-                  <p>${latestPost.author.designation ? latestPost.author.designation:"unknown"}</p>
+                  <p>${
+                    latestPost.author.designation
+                      ? latestPost.author.designation
+                      : "unknown"
+                  }</p>
 
                 </div>
               </div>
@@ -127,12 +147,9 @@ const latestPost = async () => {
             </div>
           </div>`;
       latestPostContainer.appendChild(div);
-    })
-    
-  
+    });
   } catch (error) {
-    console.error("Error fetching data:" ,error);
-    
+    console.error("Error fetching data:", error);
   }
-}
+};
 latestPost();
