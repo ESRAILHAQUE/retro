@@ -1,13 +1,13 @@
 let posts; // Define the posts array in the global scope
 
-const api = async () => {
+const loadPosts = async () => {
   try {
     const res = await fetch(
       "https://openapi.programming-hero.com/api/retro-forum/posts"
     );
     const data = await res.json();
     posts = data.posts; // Assign fetched posts to the global posts variable
-    console.log(posts);
+  
 
     postContainer = document.getElementById("post-section");
     posts.forEach((post) => {
@@ -87,5 +87,52 @@ function addItem(index) {
   listMenu.appendChild(li);
 }
 
+loadPosts();
 
-api();
+const latestPost = async () => {
+  try {
+    const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/latest-posts");
+    const data = await res.json();
+    console.log(data);
+    latestPostContainer = document.getElementById("latestPostContainer");
+    data.forEach((latestPost) =>{
+      const div = document.createElement('div');
+      div.innerHTML = `<div class="card  bg-base-100 h-full shadow-xl">
+            <figure class="px-10 pt-10">
+              <img
+                src="${latestPost.cover_image}"
+                alt="Shoes"
+                class="rounded-xl"
+              />
+            </figure>
+            <div class="card-body ">
+              <p><i class="fa-solid fa-calendar-days"></i> <span>${
+                latestPost.author.posted_date
+                  ? latestPost.author.posted_date
+                  : "No publish date"
+              }</span></p>
+              <h2 class="card-title">${latestPost.title}!</h2>
+              <p>${latestPost.description}</p>
+              <div class="flex gap-4">
+                <img src="${
+                  latestPost.profile_image
+                }" alt="" class="w-10 h-10 rounded-full">
+                <div>
+                  <h2>${latestPost.author.name}</h2>
+                  <p>${latestPost.author.designation ? latestPost.author.designation:"unknown"}</p>
+
+                </div>
+              </div>
+              
+            </div>
+          </div>`;
+      latestPostContainer.appendChild(div);
+    })
+    
+  
+  } catch (error) {
+    console.error("Error fetching data:" ,error);
+    
+  }
+}
+latestPost();
