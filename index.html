@@ -19,6 +19,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+   
+
+    
     <!-- Custom style -->
     <style>
       .primary-btn {
@@ -32,8 +35,9 @@
         position: absolute;
         top: -4px;
         left: 34px;
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #ffffff;
         border-radius: 50%;
         z-index: 1;
       }
@@ -104,7 +108,7 @@
       <!-- Banner section start -->
       <section class="">
         <div
-          class="hero min-h-screen bg-[#12132D] flex flex-col lg:flex-row justify-evenly rounded-3xl overflow-hidden"
+          class="hero min-h-screen bg-[#12132D] flex flex-col p-4 lg:flex-row justify-evenly rounded-3xl overflow-hidden"
           style="background-image: url(images/bgbanner.png)"
         >
           <div class="hero-content text-center text-neutral-content">
@@ -120,7 +124,7 @@
                   type="text" id="searchInput"
                   class="w-3/4 text-2xl px-3 text-black outline-none"
                   placeholder="Search here anything"
-                /><button onclick="searchBtn()" class="btn primary-btn">
+                /><button onclick="searchBtn()" class="btn primary-btn bg-none">
                   Search
                 </button>
               </div>
@@ -162,7 +166,7 @@
           <span class="loading loading-bars loading-lg"></span>
         </div>
         <!-- api integration section -->
-        <div class="flex flex-col lg:flex-row justify-between my-4">
+        <div id="integrated-section" class="flex flex-col lg:flex-row justify-between my-4">
           <!-- left side -->
           <div id="post-section"></div>
           <!-- right side -->

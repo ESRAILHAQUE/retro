@@ -1,4 +1,4 @@
-let posts; 
+let posts;
 
 const loadPosts = async (searchInput) => {
   try {
@@ -13,11 +13,11 @@ const loadPosts = async (searchInput) => {
     console.log(posts);
 
     postContainer = document.getElementById("post-section");
-        postContainer.innerHTML = ""; 
+    postContainer.innerHTML = "";
     posts.forEach((post) => {
       const div = document.createElement("div");
-      div.innerHTML = `<div class="bg-[#f3f3f5]  mb-4 rounded-lg p-6 ">
-              <div class="flex gap-2 relative"><img class="w-10 h-12 rounded-lg bg-cover" src="${
+      div.innerHTML = `<div class="bg-[#f3f3f5]  mb-4  rounded-lg p-6 ">
+              <div class="flex gap-2 relative"><img class="w-15 h-15 rounded-full h-12  bg-cover" src="${
                 post.image
               }" alt="" 
        style="background-color: ${post.isActive === true ? "green" : "red"}" />
@@ -34,13 +34,13 @@ const loadPosts = async (searchInput) => {
                 <h3 class="text-xl font-bold">
                   ${post.title}
                 </h3>
-                <p class="border-b-2 border-dashed pb-4">
+                <p class="border-b-2  border-dashed pb-4">
                    ${post.description}
                 </p>
               
               </div>
               </div>
-                <div class="flex px-4 ml-8 justify-between my-5">
+                <div class="flex px-4 lg:ml-8 justify-between my-5">
                   <div class="flex gap-6">
                     <p><i class="fa-regular fa-comment-dots"></i> <span>${
                       post.comment_count
@@ -52,7 +52,7 @@ const loadPosts = async (searchInput) => {
                       post.posted_time
                     } min </span></p>
                   </div>
-                  <div class="bg-[#10b981] flex justify-end rounded-full p-0.5"><p class="w-6 text-center h-6" onclick="addItem(${posts.indexOf(
+                  <div class="bg-[#10b981] flex justify-end rounded-full items-center p-0.5"><p class="w-6 text-center h-6" onclick="addItem(${posts.indexOf(
                     post
                   )})"><i class="fa-regular fa-envelope-open  text-white"></i></p></div>
                 </div>
@@ -85,7 +85,6 @@ function addItem(index) {
     "p-2"
   );
 
-  
   const titleElement = document.createElement("h2");
   titleElement.classList.add("text-xl", "font-normal");
   titleElement.innerText = clickedPost.title;
@@ -95,7 +94,6 @@ function addItem(index) {
     <i class="fa-regular fa-eye"></i>
     <span>${clickedPost.view_count}</span>
   `;
-
 
   li.appendChild(titleElement);
   li.appendChild(viewCountElement);
@@ -107,26 +105,27 @@ function addItem(index) {
 loadPosts();
 
 const spinner = document.getElementById("spinner");
-function hideSpinner() {
-  spinner.classList.remove("hidden");
- 
-  
+const integrated_section = document.getElementById("integrated-section");
 
-  
-  setTimeout(() => {
-    spinner.classList.add("hidden");
-  }, 2000); 
+function hideSpinner() {
+  const searchInput = document.getElementById("searchInput").value;
+  if (searchInput) {
+    spinner.classList.remove("hidden");
+    integrated_section.classList.add("hidden");
+
+    setTimeout(() => {
+      spinner.classList.add("hidden");
+      integrated_section.classList.remove("hidden");
+    }, 1000);
+  }
 }
 
 function searchBtn() {
   hideSpinner();
   posts.textContent = "";
   const searchInput = document.getElementById("searchInput").value;
-    loadPosts(searchInput);
+  loadPosts(searchInput);
 }
-
-
-
 
 const latestPost = async () => {
   try {
